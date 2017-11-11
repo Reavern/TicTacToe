@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+class RoomsModel {
+    var key: String?
+    var master: String?
+    var player: String?
+    var title: String?
+
+}
+

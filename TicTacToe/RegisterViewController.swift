@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passTF: UITextField!
+    @IBOutlet weak var rePassTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,16 +26,29 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func registerButtonTapped(_ sender: Any) {
+        if emailTF.text != "" || passTF.text != "" {
+            if passTF.text == rePassTF.text {
+                Auth.auth().createUser(withEmail: emailTF.text!, password: passTF.text!, completion: { (user, error) in
+                        if error != nil {
+                            print(error)
+                        } else {
+                            print("Registered")
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                )
+            } else {
+                print("Pass != Re Pass")
+            }
+        } else {
+            print("Email / Pass Null")
+        }
     }
-    */
+    
+    
+    @IBAction func singInButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
