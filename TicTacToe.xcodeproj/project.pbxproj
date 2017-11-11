@@ -22,6 +22,7 @@
 		E5FB643A1FB7272300BD7E87 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB64391FB7272300BD7E87 /* RoomsViewController.swift */; };
 		E5FB643C1FB7281400BD7E87 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB643B1FB7281400BD7E87 /* RoomCell.swift */; };
 		E5FB643E1FB7282E00BD7E87 /* RoomsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB643D1FB7282E00BD7E87 /* RoomsModel.swift */; };
+		E5FB64401FB754C700BD7E87 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB643F1FB754C700BD7E87 /* GameViewController.swift */; };
 		EDBF4ECE70B8C44930089590 /* Pods_TicTacToeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1C81153F7CF4BD1BC61694 /* Pods_TicTacToeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		E5FB64391FB7272300BD7E87 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		E5FB643B1FB7281400BD7E87 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		E5FB643D1FB7282E00BD7E87 /* RoomsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsModel.swift; sourceTree = "<group>"; };
+		E5FB643F1FB754C700BD7E87 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EEC9BD9FAD857116C8A06140 /* Pods_TicTacToe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicTacToe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				E5FB643B1FB7281400BD7E87 /* RoomCell.swift */,
 				E5FB643D1FB7282E00BD7E87 /* RoomsModel.swift */,
 				E5FB64391FB7272300BD7E87 /* RoomsViewController.swift */,
+				E5FB643F1FB754C700BD7E87 /* GameViewController.swift */,
 				E5134A2B1FB6921900CA738A /* Assets.xcassets */,
 				E5134A2D1FB6921900CA738A /* LaunchScreen.storyboard */,
 				E5134A301FB6921900CA738A /* Info.plist */,
@@ -491,6 +494,7 @@
 				E5115FF71FB69A3E00717FFA /* LoginViewController.swift in Sources */,
 				E5FB643A1FB7272300BD7E87 /* RoomsViewController.swift in Sources */,
 				E5115FFB1FB6A18900717FFA /* UserModel.swift in Sources */,
+				E5FB64401FB754C700BD7E87 /* GameViewController.swift in Sources */,
 				E5FB643C1FB7281400BD7E87 /* RoomCell.swift in Sources */,
 				E5FB643E1FB7282E00BD7E87 /* RoomsModel.swift in Sources */,
 				E5134A251FB6921900CA738A /* AppDelegate.swift in Sources */,

@@ -47,6 +47,33 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
     }
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Create New Room", message: "Enter a Text", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.text = "Default Room"
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let title = alert?.textFields![0].text
+            self.addRoom(title: title!)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    
+    }
+    
+    func addRoom(title: String) {
+        let key = ref.childByAutoId().key
+        let items = [
+            "key": key,
+            "master": user,
+            "title": title
+        ]
+        ref.child("rooms").child(key).setValue(items) { (error, ref) in
+            self.performSegue(withIdentifier: "gameSegue", sender: key)
+            
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,17 +95,17 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let key = Rooms[indexPath.row].key
+        performSegue(withIdentifier: "gameSegue", sender: key)
     }
     
     
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let next = segue.destination as! GameViewController
+        next.key = sender as! String
     }
     
 
