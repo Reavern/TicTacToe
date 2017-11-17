@@ -17,13 +17,11 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        ref = Database.database().reference()
         listenData()
-    
     }
 
     func listenData() {
-        ref = Database.database().reference()
         ref.child("rooms").observe(DataEventType.value, with: { (snapshot) in
             self.Rooms.removeAll()
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -31,9 +29,11 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let title = snap.childSnapshot(forPath: "title").value as! String
                     let key = snap.childSnapshot(forPath: "key").value as! String
                     let master = snap.childSnapshot(forPath: "master").value as! String
-                    if (snap.childSnapshot(forPath: "player").value as? String) != nil {
-                        
-                    } else {
+                    
+                    let game = snap.childSnapshot(forPath: "game")
+                    let status = game.childSnapshot(forPath: "status").value as! Int
+                    
+                    if (status == 0) {
                         let RoomsTemp = RoomsModel()
                         RoomsTemp.title = title
                         RoomsTemp.key = key
@@ -64,14 +64,51 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func addRoom(title: String) {
         let key = ref.childByAutoId().key
+        let mTurn = Int(arc4random_uniform(2))
+        var pTurn = 1
+        if mTurn == 1 {
+            pTurn = 0
+        }
+        
         let items = [
             "key": key,
             "master": user,
-            "title": title
-        ]
+            "player": "",
+            "title": title,
+            "game": [
+                "turn": [
+                    "master": mTurn,
+                    "player": pTurn
+                ],
+                "blocks": [
+                    "a": 2,
+                    "b": 2,
+                    "c": 2,
+                    "d": 2,
+                    "e": 2,
+                    "f": 2,
+                    "g": 2,
+                    "h": 2,
+                    "i": 2
+                ],
+                "status": 0
+            ]
+        ] as [String : Any]
         ref.child("rooms").child(key).setValue(items) { (error, ref) in
             self.performSegue(withIdentifier: "gameSegue", sender: key)
             
+        }
+    }
+    
+    func enterRoom(key: String, callback: @escaping ()->()) {
+        let status = ref.child("rooms").child(key).child("game").child("status")
+        status.setValue(1) { (error, ref) in
+            if (error == nil) {
+                callback()
+            }
+            else {
+                print(error?.localizedDescription)
+            }
         }
     }
     
@@ -79,8 +116,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     
     // Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,13 +132,12 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let key = Rooms[indexPath.row].key
-        performSegue(withIdentifier: "gameSegue", sender: key)
+        enterRoom(key: key!, callback: {
+            self.performSegue(withIdentifier: "gameSegue", sender: key)
+        })
     }
     
-    
-    
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let next = segue.destination as! GameViewController
         next.key = sender as! String
