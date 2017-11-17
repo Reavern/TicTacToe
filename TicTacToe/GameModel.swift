@@ -9,10 +9,14 @@
 import Foundation
 
 class GameModel {
-    var status: Int?
-    var key: String?
-    var master: String?
-    var player: String?
+    var status: Int!
+    var turn: Int!
+    var pTurn: Int!
+    var mTurn: Int!
+    var key: String!
+    var title: String!
+    var master: String!
+    var player: String!
     var blocks: [String:Int] = [:]
 
 }

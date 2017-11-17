@@ -77,8 +77,9 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             "title": title,
             "game": [
                 "turn": [
-                    "master": mTurn,
-                    "player": pTurn
+                    "turn": 0,
+                    "mTurn": mTurn,
+                    "pTurn": pTurn
                 ],
                 "blocks": [
                     "a": 2,

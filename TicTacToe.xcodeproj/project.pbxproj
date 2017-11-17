@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0676C67C273C65FF518268CC /* Pods_TicTacToeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5186FBE53B6EEC41FB3E9959 /* Pods_TicTacToeTests.framework */; };
 		3A2C7FC01FBE8A00004DC256 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C7FBF1FBE8A00004DC256 /* GameModel.swift */; };
+		3A2C7FC21FBE9DBB004DC256 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C7FC11FBE9DBB004DC256 /* GameCell.swift */; };
 		6756EE338FB84F711A73D70F /* Pods_TicTacToe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9BD9FAD857116C8A06140 /* Pods_TicTacToe.framework */; };
 		E5115FF51FB699A600717FFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5115FF41FB699A600717FFA /* GoogleService-Info.plist */; };
 		E5115FF71FB69A3E00717FFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5115FF61FB69A3E00717FFA /* LoginViewController.swift */; };
@@ -48,6 +49,7 @@
 		04CFDECF224B56F71D05CFAE /* Pods-TicTacToeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToeTests/Pods-TicTacToeTests.release.xcconfig"; sourceTree = "<group>"; };
 		2F3D88C465AF4AAF354447DD /* Pods-TicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToe/Pods-TicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2C7FBF1FBE8A00004DC256 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		3A2C7FC11FBE9DBB004DC256 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		5186FBE53B6EEC41FB3E9959 /* Pods_TicTacToeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicTacToeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		809726FE67D599FFB4DAB5B0 /* Pods-TicTacToeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToeUITests/Pods-TicTacToeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80C341030E05257864483BA0 /* Pods-TicTacToe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToe/Pods-TicTacToe.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E5115FFA1FB6A18900717FFA /* UserModel.swift */,
 				E5115FF81FB69B6A00717FFA /* RegisterViewController.swift */,
 				3A2C7FBF1FBE8A00004DC256 /* GameModel.swift */,
+				3A2C7FC11FBE9DBB004DC256 /* GameCell.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				3A2C7FC01FBE8A00004DC256 /* GameModel.swift in Sources */,
 				E5FB643A1FB7272300BD7E87 /* RoomsViewController.swift in Sources */,
 				E5115FFB1FB6A18900717FFA /* UserModel.swift in Sources */,
+				3A2C7FC21FBE9DBB004DC256 /* GameCell.swift in Sources */,
 				E5FB64401FB754C700BD7E87 /* GameViewController.swift in Sources */,
 				E5FB643C1FB7281400BD7E87 /* RoomCell.swift in Sources */,
 				E5FB643E1FB7282E00BD7E87 /* RoomsModel.swift in Sources */,
