@@ -48,10 +48,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if emailTF.text != "" || passTF.text != "" {
-            Auth.auth().signIn(withEmail: emailTF.text!, password: passTF.text!, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: emailTF.text!, password: passTF.text!, completion: { (usr, error) in
                 if error != nil {
                     print(error!)
                 } else {
+                    user = self.emailTF.text!
                     if self.rememberState.isOn {
                         let userTemp = UserModel()
                         userTemp.email = self.emailTF.text!

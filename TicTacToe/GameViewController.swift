@@ -16,6 +16,18 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         ["d", "e", "f"],
         ["g", "h", "i"]
     ]
+    let winValidation = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7 ,8],
+        
+        [0, 4, 8],
+        [2, 4, 6],
+        
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8]
+    ]
     var myTurn = 0
     var Game = GameModel()
     
@@ -31,6 +43,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         listenData {
             self.myTurn = self.getTurn()
+            self.checkGameData()
+            self.winVal()
             self.collectionView.reloadData()
         }
         
@@ -45,6 +59,70 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             turn = Game.pTurn
         }
         return turn
+    }
+    
+    func checkGameData() {
+        if Game.status == 2 {
+            let alert = UIAlertController(title: "Game Stoped", message: "A Player Has Left The Game", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: { () in
+                self.navigationController?.popViewController(animated: true)
+            })
+        } else {
+            if Game.status == 3 {
+                if myTurn == 0 {
+                    let alert = UIAlertController(title: "Victory", message: "You Has Won The Game", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: { () in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } else {
+                    let alert = UIAlertController(title: "You Lose", message: "Opponent Has Won The Game", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: { () in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+                
+            } else if Game.status == 4 {
+                if myTurn == 1 {
+                    let alert = UIAlertController(title: "Victory", message: "You Has Won The Game", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: { () in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } else {
+                    let alert = UIAlertController(title: "You Lose", message: "Opponent Has Won The Game", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: { () in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+        }
+        
+    }
+    
+    func winVal() {
+        var gameData = [Int]()
+        for list in data {
+            for index in 0...2 {
+                gameData.append(Game.blocks[list[index]]!)
+            }
+        }
+        print(gameData)
+        for val in winValidation {
+            print(val)
+            if gameData[val[0]] == gameData[val[1]] && gameData[val[1]] == gameData[val[2]] {
+                if gameData[val[0]] == 0 {
+                    ref.child("game").child("status").setValue(3)
+                } else if gameData[val[0]] == 1 {
+                    ref.child("game").child("status").setValue(4)
+                } else {
+                    print("nay")
+                }
+            }
+        }
     }
     
     func listenData(callback: @escaping ()->()) {
@@ -85,11 +163,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tempData = self.data[indexPath.section][indexPath.row]
-        if Game.blocks[tempData] == 2 {
-            ref.child("game").child("blocks").child(tempData).setValue(self.myTurn) { (err, ref) in
-                print("Tapped")
-                // After Tapped
+        if Game.blocks[tempData] == 2 && Game.turn == myTurn {
+            var nextTurn = 0
+            if self.Game.turn == 0 {
+                nextTurn = 1
             }
+            ref.child("game").child("blocks").child(tempData).setValue(self.myTurn)
+            ref.child("game").child("turn").child("turn").setValue(nextTurn)
         }
     }
     
@@ -112,6 +192,4 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }
