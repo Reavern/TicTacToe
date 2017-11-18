@@ -11,6 +11,7 @@ import Firebase
 
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var turnLabel: UILabel!
     let data = [
         ["a", "b", "c"],
         ["d", "e", "f"],
@@ -45,12 +46,21 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.myTurn = self.getTurn()
             self.checkGameData()
             self.winVal()
+            self.setUI()
             self.collectionView.reloadData()
         }
         
         
     }
 
+    func setUI() {
+        if Game.turn == myTurn {
+            turnLabel.text = "Your Turn !"
+        } else {
+            turnLabel.text = "Opponent's Turn !"
+        }
+    }
+    
     func getTurn() -> Int {
         var turn = 0
         if Game.master == user {
@@ -61,27 +71,31 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         return turn
     }
     
+    func popVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func checkGameData() {
         if Game.status == 2 {
             let alert = UIAlertController(title: "Game Stoped", message: "A Player Has Left The Game", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: { () in
-                self.navigationController?.popViewController(animated: true)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) -> Void in
+                self.popVC()
             })
+            self.present(alert, animated: true)
         } else {
             if Game.status == 3 {
                 if myTurn == 0 {
-                    let alert = UIAlertController(title: "Victory", message: "You Has Won The Game", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true, completion: { () in
-                        self.navigationController?.popViewController(animated: true)
+                    let alert = UIAlertController(title: "Victory", message: "You Won The Game", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) -> Void in
+                        self.popVC()
                     })
+                    self.present(alert, animated: true)
                 } else {
                     let alert = UIAlertController(title: "You Lose", message: "Opponent Has Won The Game", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true, completion: { () in
-                        self.navigationController?.popViewController(animated: true)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) -> Void in
+                        self.popVC()
                     })
+                    self.present(alert, animated: true)
                 }
                 
             } else if Game.status == 4 {
@@ -89,13 +103,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let alert = UIAlertController(title: "Victory", message: "You Has Won The Game", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true, completion: { () in
-                        self.navigationController?.popViewController(animated: true)
+                        self.popVC()
                     })
                 } else {
                     let alert = UIAlertController(title: "You Lose", message: "Opponent Has Won The Game", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true, completion: { () in
-                        self.navigationController?.popViewController(animated: true)
+                        self.popVC()
                     })
                 }
             }
@@ -183,10 +197,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         return color
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         ref.child("game").child("status").setValue(2)
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

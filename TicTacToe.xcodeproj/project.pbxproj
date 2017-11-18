@@ -10,6 +10,8 @@
 		0676C67C273C65FF518268CC /* Pods_TicTacToeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5186FBE53B6EEC41FB3E9959 /* Pods_TicTacToeTests.framework */; };
 		3A2C7FC01FBE8A00004DC256 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C7FBF1FBE8A00004DC256 /* GameModel.swift */; };
 		3A2C7FC21FBE9DBB004DC256 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C7FC11FBE9DBB004DC256 /* GameCell.swift */; };
+		3A4463E41FC002770074B0F0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4463E31FC002770074B0F0 /* AdSupport.framework */; };
+		3A4463E61FC002800074B0F0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4463E51FC002800074B0F0 /* CoreLocation.framework */; };
 		6756EE338FB84F711A73D70F /* Pods_TicTacToe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC9BD9FAD857116C8A06140 /* Pods_TicTacToe.framework */; };
 		E5115FF51FB699A600717FFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5115FF41FB699A600717FFA /* GoogleService-Info.plist */; };
 		E5115FF71FB69A3E00717FFA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5115FF61FB69A3E00717FFA /* LoginViewController.swift */; };
@@ -50,6 +52,9 @@
 		2F3D88C465AF4AAF354447DD /* Pods-TicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToe/Pods-TicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2C7FBF1FBE8A00004DC256 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		3A2C7FC11FBE9DBB004DC256 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		3A4463E31FC002770074B0F0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3A4463E51FC002800074B0F0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3AEE5D5E1FC03FD000F2D349 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5186FBE53B6EEC41FB3E9959 /* Pods_TicTacToeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicTacToeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		809726FE67D599FFB4DAB5B0 /* Pods-TicTacToeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToeUITests/Pods-TicTacToeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80C341030E05257864483BA0 /* Pods-TicTacToe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToe/Pods-TicTacToe.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4463E61FC002800074B0F0 /* CoreLocation.framework in Frameworks */,
+				3A4463E41FC002770074B0F0 /* AdSupport.framework in Frameworks */,
 				6756EE338FB84F711A73D70F /* Pods_TicTacToe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +130,9 @@
 		9E085F9D8E46ABF63A4BC774 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AEE5D5E1FC03FD000F2D349 /* iAd.framework */,
+				3A4463E51FC002800074B0F0 /* CoreLocation.framework */,
+				3A4463E31FC002770074B0F0 /* AdSupport.framework */,
 				EEC9BD9FAD857116C8A06140 /* Pods_TicTacToe.framework */,
 				5186FBE53B6EEC41FB3E9959 /* Pods_TicTacToeTests.framework */,
 				AE1C81153F7CF4BD1BC61694 /* Pods_TicTacToeUITests.framework */,

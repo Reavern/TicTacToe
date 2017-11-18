@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.realm = try! Realm()
+        
+        
         loadEmail()
     }
 

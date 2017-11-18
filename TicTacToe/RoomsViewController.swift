@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,8 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         ref = Database.database().reference()
         listenData()
+
+        
     }
 
     func listenData() {
